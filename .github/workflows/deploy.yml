@@ -1,0 +1,27 @@
+name: Deploy to Ubuntu
+
+on:
+  push:
+    branches:
+      - main
+      - dev1
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Show files
+      run: |
+        pwd
+        ls -la
+
+    - name: Deploy Application
+      run: |
+        echo "Deploying application"
+        mkdir -p ~/deployments
+        cp -r * ~/deployments/
